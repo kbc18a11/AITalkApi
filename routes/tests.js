@@ -7,12 +7,8 @@ const Tests = require('../model/Tests');
 
 /* GET home page. */
 router.get('/', testValidator, (req, res, next) => {
-    let a = 'aaa';
-    /*const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.status(422).json({ errors: errors.array() });
-    }*/
 
+    //データをすべて取得
     Tests.all().then(data => {
         console.log(data)
         return res.send(data);
