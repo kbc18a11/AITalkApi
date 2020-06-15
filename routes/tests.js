@@ -13,10 +13,10 @@ router.get('/tests', (req, res, next) => {
 
     //レコードをすべて取得
     Tests.all()
-        .then((data) => {
-            console.log(data)
+        .then((rows) => {
+            console.log(rows)
             //レコードを返す
-            return res.send(data);
+            return res.send(rows);
         })
         .catch((error) => {
             console.log(error);
