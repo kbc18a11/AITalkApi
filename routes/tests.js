@@ -9,7 +9,7 @@ const Tests = require('../model/Tests');
  * @GET
  * testsのレコードをすべて取得
  */
-router.get('/tests', testValidator, (req, res, next) => {
+router.get('/tests', (req, res, next) => {
 
     //レコードをすべて取得
     Tests.all()
