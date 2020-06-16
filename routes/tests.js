@@ -28,6 +28,10 @@ router.get('/tests', async (req, res, next) => {
 
 });
 
+/**
+ * @POST
+ * testsに新しいレコードを挿入
+ */
 router.post('/test', testValidator.post, async (req, res, next) => {
     //バリデーションの結果にエラーがあるかのチェック
     const errors = validationResult(req);
@@ -36,7 +40,7 @@ router.post('/test', testValidator.post, async (req, res, next) => {
     }
 
     try {
-        //データの挿入開始
+        //レコードの挿入開始
         await Tests.insert({text: req.query.text});
         return res.send({'insertResult': true});
     } catch (error) {
