@@ -46,7 +46,7 @@ class AbstractModel {
     }
 
     /**
-     * update文実行用の抽象メソッド
+     * UPDATE文実行用の抽象メソッド
      * @abstract
      * @param {object} insertParam
      * @returns {Promise<void>}
