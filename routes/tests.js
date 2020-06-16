@@ -55,6 +55,10 @@ router.post('/test', async (req, res, next) => {
     }
 });
 
+/**
+ * @PUT
+ * レコードの更新
+ */
 router.put('/test/:id', async (req, res, next) => {
     //バリデーションの結果にエラーがあるかのチェック
 
@@ -70,8 +74,9 @@ router.put('/test/:id', async (req, res, next) => {
         return res.status(422).send({errors: validation.errors.all()});
     }
 
+
+
     return res.send(req.query.text);
-    return res.send(req.params.id);
 })
 
 module.exports = router;
