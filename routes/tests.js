@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const testValidator = require('../midleware/validators/tests/testsValidator')
-const {validationResult} = require('express-validator');
+const rules = require('../midleware/validationRule/testsRules')
+const validator = require('validatorjs');
 const connection = require('../database/mysqlConnection');
 const Tests = require('../model/Tests');
 
@@ -32,11 +32,12 @@ router.get('/tests', async (req, res, next) => {
  * @POST
  * testsに新しいレコードを挿入
  */
-router.post('/test', testValidator.post, async (req, res, next) => {
+router.post('/test', async (req, res, next) => {
     //バリデーションの結果にエラーがあるかのチェック
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.status(422).json({errors: errors.array()});
+    const validation = new validator(req, rules.post);
+    if (validation.fails()) {
+        //エラーを422で返す
+        return res.status(422).send({errors: validation.errors.all()});
     }
 
     try {
@@ -50,5 +51,17 @@ router.post('/test', testValidator.post, async (req, res, next) => {
         return res.send({'insertResult': false});
     }
 });
+
+router.put('/test/:id', async (req, res, next) => {
+    //バリデーションの結果にエラーがあるかのチェック
+    const validation = new validator(req, rules.post);
+    if (validation.fails()) {
+        //エラーを422で返す
+        return res.status(422).send({errors: validation.errors.all()});
+    }
+
+    return res.send(req.query.text);
+    return res.send(req.params.id);
+})
 
 module.exports = router;
