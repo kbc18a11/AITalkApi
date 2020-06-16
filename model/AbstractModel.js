@@ -1,4 +1,3 @@
-const {validationResult} = require('express-validator');
 const connection = require('../database/mysqlConnection');
 require('date-utils');
 
