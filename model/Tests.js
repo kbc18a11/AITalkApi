@@ -1,6 +1,6 @@
-const  AbstractModel = require('./AbstractModel');
+const AbstractModel = require('./AbstractModel');
 
-class Tests extends AbstractModel{
+class Tests extends AbstractModel {
     constructor() {
         super();
     }
