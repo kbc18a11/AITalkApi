@@ -1,5 +1,6 @@
 const {validationResult} = require('express-validator');
 const connection = require('../database/mysqlConnection');
+require('date-utils');
 
 class AbstractModel {
     constructor() {
@@ -26,6 +27,23 @@ class AbstractModel {
 
         //console.log(rows);
         return rows;
+    }
+
+    /**
+     * INSERT文を実行
+     * @param insertParam
+     * @param{string} sql
+     * @returns {Promise<void>}
+     */
+    static async insert(insertParam) {
+        const sql = `INSERT ${this.abstractTABLE_NAME} SET ?;`;//INSERT文
+
+        //create_at用の日付時間取得
+        insertParam.created_at = new Date().toFormat('YYYY-MM-DD HH:MI:SS');
+
+        //console.log(insertParam);
+        //SQLを実行
+        await connection.query(sql, insertParam);
     }
 }
 
