@@ -16,6 +16,11 @@ class Tests extends AbstractModel {
         return 'tests';
     }
 
+    /**
+     * @override
+     * @param insertParam
+     * @returns {Promise<void>}
+     */
     static async update(insertParam) {
         //UPDATE文
         const sql = `UPDATE ${this.abstractTABLE_NAME} SET text = ?,updated_at = ? WHERE id = ?`;
