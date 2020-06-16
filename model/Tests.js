@@ -10,9 +10,10 @@ class Tests extends AbstractModel {
      * @override
      * @returns {string}
      */
-    static get abstractTABLE_NAME(){
+    static get abstractTABLE_NAME() {
         return 'tests';
     }
+
 }
 
 module.exports = Tests;
