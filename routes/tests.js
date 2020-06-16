@@ -33,8 +33,12 @@ router.get('/tests', async (req, res, next) => {
  * testsに新しいレコードを挿入
  */
 router.post('/test', async (req, res, next) => {
+    //バリデーションの検証を受ける値
+    const verificationValue = {
+        text: req.query.text
+    }
     //バリデーションの結果にエラーがあるかのチェック
-    const validation = new validator(req.query, rules.post);
+    const validation = new validator(verificationValue, rules.post.rule, rules.post.errorMessage);
     if (validation.fails()) {
         //エラーを422で返す
         return res.status(422).send({errors: validation.errors.all()});
@@ -53,7 +57,14 @@ router.post('/test', async (req, res, next) => {
 
 router.put('/test/:id', async (req, res, next) => {
     //バリデーションの結果にエラーがあるかのチェック
-    const validation = new validator(req, rules.put);
+
+    //バリデーションの検証を受ける値
+    const verificationValue = {
+        id: req.params.id,
+        text: req.query.text
+    }
+    //バリデーションの結果にエラーがあるかのチェック
+    const validation = new validator(verificationValue, rules.put.rule, rules.put.errorMessage);
     if (validation.fails()) {
         //エラーを422で返す
         return res.status(422).send({errors: validation.errors.all()});
