@@ -1,5 +1,6 @@
-const { check } = require('express-validator');
+const {check} = require('express-validator');
 
-module.exports = [
-    check('id').not().isEmpty().withMessage('必須項目です。'),
-];
+module.exports = {
+    //post用
+    post: [check('text').not().isEmpty().withMessage('必須項目です。')]
+};
