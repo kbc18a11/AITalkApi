@@ -60,8 +60,6 @@ router.post('/test', async (req, res, next) => {
  * レコードの更新
  */
 router.put('/test/:id', async (req, res, next) => {
-    //バリデーションの結果にエラーがあるかのチェック
-
     //バリデーションの検証を受ける値
     const verificationValue = {
         id: req.params.id,
@@ -74,9 +72,16 @@ router.put('/test/:id', async (req, res, next) => {
         return res.status(422).send({errors: validation.errors.all()});
     }
 
+    try {
+        //レコードの更新開始
+        await Tests.update(verificationValue);
+        return res.send({'updateResult': true});
+    } catch (error) {
+        //レコードの更新失敗時
+        console.log(error);
+        return res.status(500).send({'updateResult': false});
+    }
 
-
-    return res.send(req.query.text);
 })
 
 module.exports = router;
