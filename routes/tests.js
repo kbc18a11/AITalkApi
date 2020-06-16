@@ -34,7 +34,7 @@ router.get('/tests', async (req, res, next) => {
  */
 router.post('/test', async (req, res, next) => {
     //バリデーションの結果にエラーがあるかのチェック
-    const validation = new validator(req, rules.post);
+    const validation = new validator(req.query, rules.post);
     if (validation.fails()) {
         //エラーを422で返す
         return res.status(422).send({errors: validation.errors.all()});
@@ -47,14 +47,13 @@ router.post('/test', async (req, res, next) => {
     } catch (error) {
         //レコードの挿入失敗時
         console.log(error);
-        res.status(500);
-        return res.send({'insertResult': false});
+        return res.status(500).send({'insertResult': false});
     }
 });
 
 router.put('/test/:id', async (req, res, next) => {
     //バリデーションの結果にエラーがあるかのチェック
-    const validation = new validator(req, rules.post);
+    const validation = new validator(req, rules.put);
     if (validation.fails()) {
         //エラーを422で返す
         return res.status(422).send({errors: validation.errors.all()});
