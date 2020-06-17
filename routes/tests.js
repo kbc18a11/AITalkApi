@@ -38,7 +38,11 @@ router.post('/test', async (req, res, next) => {
         text: req.query.text
     }
     //バリデーションの結果にエラーがあるかのチェック
-    const validation = new validator(verificationValue, rules.post.rule, rules.post.errorMessage);
+    const validation = new validator(
+        verificationValue,
+        Tests.abstractVALIDATIONRULES.post.rule,
+        Tests.abstractVALIDATIONRULES.post.errorMessage
+    );
     if (validation.fails()) {
         //エラーを422で返す
         return res.status(422).send({errors: validation.errors.all()});
@@ -66,7 +70,11 @@ router.put('/test/:id', async (req, res, next) => {
         text: req.query.text
     }
     //バリデーションの結果にエラーがあるかのチェック
-    const validation = new validator(verificationValue, rules.put.rule, rules.put.errorMessage);
+    const validation = new validator(
+        verificationValue,
+        Tests.abstractVALIDATIONRULES.put.rule,
+        Tests.abstractVALIDATIONRULES.put.errorMessage
+    );
     if (validation.fails()) {
         //エラーを422で返す
         return res.status(422).send({errors: validation.errors.all()});

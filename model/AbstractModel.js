@@ -8,9 +8,16 @@ class AbstractModel {
     /**
      * テーブル名を取得する抽象メソッド
      * @returns {string}
-     * @constructor
      */
     static get abstractTABLE_NAME() {
+    }
+
+    /**
+     *  バリデーションのルールを返す抽象メソッド
+     *  @abstract
+     *  @return {Object}
+     */
+    static get abstractVALIDATIONRULES() {
     }
 
     /**
