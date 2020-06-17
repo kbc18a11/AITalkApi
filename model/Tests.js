@@ -23,7 +23,7 @@ class Tests extends AbstractModel {
      */
     static get abstractVALIDATIONRULES() {
         return {
-            //post用
+            //POSTリクエスト用
             post: {
                 rule: {
                     text: 'required'
@@ -32,7 +32,7 @@ class Tests extends AbstractModel {
                     required: '必須項目です。',
                 }
             },
-            //put用
+            //PUTリクエスト用
             put: {
                 rule: {
                     id: 'required|integer',
