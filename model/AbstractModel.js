@@ -84,6 +84,18 @@ class AbstractModel {
         await connection.query(sql, [insertParam.text, insertParam.updated_at, insertParam.id]);
     }
 
+    /***
+     * レコードの削除
+     * @param {Object} insertParam
+     * @return {Promise<void>}
+     */
+    static async delete(id) {
+        //DELETE文
+        const sql = `DELETE FROM ${this.abstractTABLE_NAME} WHERE id = ?`;
+
+        //SQLを実行
+        await connection.query(sql, [id]);
+    }
 }
 
 module.exports = AbstractModel;
