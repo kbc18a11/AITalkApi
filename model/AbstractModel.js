@@ -47,11 +47,12 @@ class AbstractModel {
         //SQLを実行(rowsがSQLの実行結果)
         const [rows, fields] = await connection.query(sql, [id]);
 
-        //レコードはぞんざいしているか？
+        //レコードは存在しているか？
         if (rows.length > 0) {
             console.log(rows);
             return true;
         }
+        //レコードは存在しなかった
         return false;
     }
 
