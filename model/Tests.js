@@ -17,9 +17,38 @@ class Tests extends AbstractModel {
     }
 
     /**
+     * バリデーションルール
      * @override
-     * @param insertParam
-     * @returns {Promise<void>}
+     * @return {Object}
+     */
+    static get abstractVALIDATIONRULES() {
+        return {
+            //post用
+            post: {
+                rule: {
+                    text: 'required'
+                },
+                errorMessage: {
+                    required: '必須項目です。',
+                }
+            },
+            //put用
+            put: {
+                rule: {
+                    id: 'required|integer',
+                    text: 'required'
+                },
+                errorMessage: {
+                    required: '必須項目です。',
+                    integer: '数値で入力してください'
+                }
+            }
+        };
+    }
+
+    /**
+     * UPDATE文の準備を行って、親クラスのupdate()に実行をさせる
+     * @param {Object} insertParam
      */
     static async update(insertParam) {
         //UPDATE文
