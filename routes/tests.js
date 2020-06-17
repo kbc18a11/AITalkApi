@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const rules = require('../midleware/validationRule/testsRules')
 const validator = require('validatorjs');
 const connection = require('../database/mysqlConnection');
 const Tests = require('../model/Tests');
