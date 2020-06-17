@@ -42,6 +42,16 @@ class Tests extends AbstractModel {
                     required: '必須項目です。',
                     integer: '数値で入力してください'
                 }
+            },
+            //DELETEリクエスト用
+            delete: {
+                rule: {
+                    id: 'required|integer'
+                },
+                errorMessage: {
+                    required: '必須項目です。',
+                    integer: '数値で入力してください'
+                }
             }
         };
     }
