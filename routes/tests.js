@@ -79,6 +79,16 @@ router.put('/test/:id', async (req, res, next) => {
         return res.status(422).send({errors: validation.errors.all()});
     }
 
+    //idは存在しないか？
+    if (!await Tests.findId(verificationValue.id)) {
+        //エラーを422で返す
+        return res.status(422).send({
+            errors: {
+                id: ['idが存在しません']
+            }
+        });
+    }
+
     try {
         //レコードの更新開始
         await Tests.update(verificationValue);
