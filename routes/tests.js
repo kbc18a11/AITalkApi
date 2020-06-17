@@ -99,6 +99,6 @@ router.put('/test/:id', async (req, res, next) => {
         return res.status(500).send({'updateResult': false});
     }
 
-})
+});
 
 module.exports = router;
