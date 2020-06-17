@@ -101,4 +101,12 @@ router.put('/test/:id', async (req, res, next) => {
 
 });
 
+/**
+ * @DELETE
+ * レコードの削除
+ */
+router.delete('/test/:id', (req, res, next) => {
+    
+})
+
 module.exports = router;
