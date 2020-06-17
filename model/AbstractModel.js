@@ -7,6 +7,7 @@ class AbstractModel {
 
     /**
      * テーブル名を取得する抽象メソッド
+     * @abstract
      * @returns {string}
      */
     static get abstractTABLE_NAME() {
