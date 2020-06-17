@@ -46,13 +46,16 @@ class AbstractModel {
     }
 
     /**
-     * UPDATE文実行用の抽象メソッド
+     * UPDATE文実行
      * @abstract
-     * @param {object} insertParam
-     * @returns {Promise<void>}
+     * @param {Object} insertParam
+     * @param {string} sql
      */
-    static async update(insertParam) {
+    static async update(insertParam, sql) {
+        //SQLを実行
+        await connection.query(sql, [insertParam.text, insertParam.updated_at, insertParam.id]);
     }
+
 }
 
 module.exports = AbstractModel;

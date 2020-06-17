@@ -28,8 +28,8 @@ class Tests extends AbstractModel {
         //create_at用の日付時間取得
         insertParam.updated_at = new Date().toFormat('YYYY-MM-DD HH:MI:SS');
 
-        //SQLを実行
-        await connection.query(sql, [insertParam.text, insertParam.updated_at, insertParam.id]);
+        //SQLの実行
+        await super.update(insertParam, sql);
     }
 }
 
