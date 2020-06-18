@@ -45,12 +45,11 @@ router.get('/tests/:id', async (req, res, next) => {
 
 
     try {
-        //レコードをすべて取得
-        const allRows = await Tests.all();
-        //console.log(allRows);
+        //レコードを取得
+        const row = await Tests.find(verificationValue.id);
 
         //レコードを返す
-        return res.send(allRows);
+        return res.send(row);
     } catch (error) {
         //レコードの取得失敗時
         console.log(error);

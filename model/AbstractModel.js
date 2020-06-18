@@ -37,6 +37,22 @@ class AbstractModel {
     }
 
     /**
+     * idからカラムを取得
+     * @param {number}id
+     * @return {Promise<*>}
+     */
+    static async find(id) {
+        const sql = `SELECT * FROM ${this.abstractTABLE_NAME} WHERE id = ?;`;
+
+        //SQLを実行(rowsがSQLの実行結果)
+        const [rows, fields] = await connection.query(sql, [id]);
+
+        console.log(rows);
+        //レコードを返す
+        return rows;
+    }
+
+    /**
      * idからカラムの存在確認をする
      * @param {number} id
      * @return {Promise<*>}
