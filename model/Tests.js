@@ -23,6 +23,15 @@ class Tests extends AbstractModel {
      */
     static get abstractVALIDATIONRULES() {
         return {
+            get:{
+                rule: {
+                    id: 'required|integer'
+                },
+                errorMessage: {
+                    required: '必須項目です。',
+                    integer: '数値で入力してください'
+                }
+            },
             //POSTリクエスト用
             post: {
                 rule: {
