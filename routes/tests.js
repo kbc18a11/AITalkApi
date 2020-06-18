@@ -27,6 +27,10 @@ router.get('/tests', async (req, res, next) => {
 
 });
 
+/**
+ * @GET
+ * 指定されたidのカラムを取得
+ */
 router.get('/tests/:id', async (req, res, next) => {
     //バリデーションの検証を受ける値
     const verificationValue = {
@@ -43,11 +47,9 @@ router.get('/tests/:id', async (req, res, next) => {
         return res.status(422).send({errors: validation.errors.all()});
     }
 
-
     try {
         //レコードを取得
         const row = await Tests.find(verificationValue.id);
-
         //レコードを返す
         return res.send(row);
     } catch (error) {
@@ -56,7 +58,6 @@ router.get('/tests/:id', async (req, res, next) => {
         res.status(500);
         return res.send({'error': 'サーバー側でエラーが発生しました'});
     }
-
 })
 
 /**
