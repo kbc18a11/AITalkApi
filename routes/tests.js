@@ -80,7 +80,7 @@ router.put('/test/:id', async (req, res, next) => {
     }
 
     //idは存在しないか？
-    if (!await Tests.findId(verificationValue.id)) {
+    if (!await Tests.existId(verificationValue.id)) {
         //エラーを422で返す
         return res.status(422).send({
             errors: {
@@ -122,7 +122,7 @@ router.delete('/test/:id', async (req, res, next) => {
     }
 
     //idは存在しないか？
-    if (!await Tests.findId(verificationValue.id)) {
+    if (!await Tests.existId(verificationValue.id)) {
         //エラーを422で返す
         return res.status(422).send({
             errors: {
