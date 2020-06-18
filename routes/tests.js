@@ -167,11 +167,11 @@ router.delete('/test/:id', async (req, res, next) => {
     try {
         //レコードの削除開始
         await Tests.delete(verificationValue.id);
-        return res.send({'updateResult': true});
+        return res.send({'deleteResult': true});
     } catch (error) {
         //レコードの削除失敗時
         console.log(error);
-        return res.status(500).send({'updateResult': false});
+        return res.status(500).send({'deleteResult': false});
     }
 
 
